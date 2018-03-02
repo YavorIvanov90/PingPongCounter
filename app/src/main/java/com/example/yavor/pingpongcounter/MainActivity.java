@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private Player player2;
     private Button pOneB;
     private Button pTwoB;
-    private EditText playerOneNameView;
-    private EditText playerTwoNameView;
 
     private TextView playerOneServeView;
     private TextView playerTwoServeView;
@@ -48,12 +46,10 @@ public class MainActivity extends AppCompatActivity {
         player1 = new Player();
         player2 = new Player();
 
-        player1.setName("Player1");
-        player2.setName("Player2");
+        player1.setName(getString(R.string.playerOne));
+        player2.setName(getString(R.string.playerTwo));
 
 
-        playerOneNameView = findViewById(R.id.playerOneName);
-        playerTwoNameView = findViewById(R.id.playerTwoName);
 
         playerOneServeView = findViewById(R.id.playerOneServe);
         playerTwoServeView = findViewById(R.id.playerTwoServe);
@@ -70,9 +66,6 @@ public class MainActivity extends AppCompatActivity {
         playerOneMinusScoreButton = findViewById(R.id.playerOneScoreMinusOne);
         playerTwoMinusScoreButton = findViewById(R.id.playerTwoScoreMinusOne);
 
-        playerOneNameView.setText(player1.getName());
-        playerTwoNameView.setText(player2.getName());
-
         pOneB = findViewById(R.id.playerOneServeButton);
         pTwoB = findViewById(R.id.playerTwoServeButton);
 
@@ -80,49 +73,9 @@ public class MainActivity extends AppCompatActivity {
         playerOneServeView.setVisibility(View.INVISIBLE);
         playerTwoServeView.setVisibility(View.INVISIBLE);
 
-/*
-        playerOnePlusScoreButton.setClickable(false);
-        playerTwoPlusScoreButton.setClickable(false);
 
-        playerOneMinusScoreButton.setClickable(false);
-        playerTwoMinusScoreButton.setClickable(false);
+        enableButtons();
 
-*/
-        playerOneNameView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                player1.setName(playerOneNameView.getText().toString());
-                //  playerOneNameView.clearFocus();
-            }
-        });
-
-        playerTwoNameView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                player2.setName(playerTwoNameView.getText().toString());
-                // playerTwoNameView.clearFocus();
-            }
-        });
 
     }
 
@@ -157,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 return player1.getName();
             } else if (playerOnePoints - playerTwoPoints >= 2) {
                 player1.addGame();
-                playerTwoServeMain();
+                playerOneServeMain();
                 return player1.getName();
             }
         }
@@ -165,9 +118,11 @@ public class MainActivity extends AppCompatActivity {
         if (playerTwoPoints >= 11) {
             if (playerOnePoints < 10) {
                 player2.addGame();
+                playerTwoServeMain();
                 return player2.getName();
             } else if (playerTwoPoints - playerOnePoints >= 2) {
                 player2.addGame();
+                playerTwoServeMain();
                 return player2.getName();
             }
         }
@@ -183,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
         player2.resetGames();
         resetServe();
         reset();
+        setServe=false;
+        enableButtons();
 
     }
 
@@ -192,8 +149,8 @@ public class MainActivity extends AppCompatActivity {
         player1.resetPoints();
         player2.resetPoints();
 
-        playerOneScoreView.setText("0");
-        playerTwoScoreView.setText("0");
+        playerOneScoreView.setText(getText(R.string.zero));
+        playerTwoScoreView.setText(getText(R.string.zero));
 
         playerOneGameView.setText(Integer.toString(player1.getGames()));
         playerTwoGameView.setText(Integer.toString(player2.getGames()));
@@ -223,13 +180,9 @@ public class MainActivity extends AppCompatActivity {
         player1.setServe(true);
         player2.setServe(false);
 
-         /*
-        playerOnePlusScoreButton.setClickable(true);
-        playerTwoPlusScoreButton.setClickable(true);
+        setServe = true;
+        enableButtons();
 
-        playerOneMinusScoreButton.setClickable(true);
-        playerTwoMinusScoreButton.setClickable(true);
-        */
         playerOneServeView.setVisibility(View.VISIBLE);
         playerTwoServeView.setVisibility(View.INVISIBLE);
         pOneB.setClickable(false);
@@ -238,7 +191,6 @@ public class MainActivity extends AppCompatActivity {
         pOneB.animate().alpha(0.5f);
         pTwoB.animate().alpha(0.5f);
 
-        setServe = true;
     }
 
     public void playerTwoServe(View view) {
@@ -248,13 +200,9 @@ public class MainActivity extends AppCompatActivity {
     private void playerTwoServeMain() {
         player1.setServe(false);
         player2.setServe(true);
-/*
-        playerOnePlusScoreButton.setClickable(true);
-        playerTwoPlusScoreButton.setClickable(true);
+        setServe = true;
+        enableButtons();
 
-        playerOneMinusScoreButton.setClickable(true);
-        playerTwoMinusScoreButton.setClickable(true);
-*/
         playerOneServeView.setVisibility(View.INVISIBLE);
         playerTwoServeView.setVisibility(View.VISIBLE);
 
@@ -264,23 +212,51 @@ public class MainActivity extends AppCompatActivity {
         pOneB.animate().alpha(0.5f);
         pTwoB.animate().alpha(0.5f);
 
-        setServe = true;
+
     }
 
     private void calculateServe() {
-        int points = player1.getPoints() + player2.getPoints();
-        if (points % 2 == 0) {
-            if (player1.getServe()) {
-                playerTwoServeMain();
-            } else if (player2.getServe()) {
-                playerOneServeMain();
+        if (setServe) {
+            int points = player1.getPoints() + player2.getPoints();
+            if (points % 2 == 0 && points > 0) {
+                if (player1.getServe()) {
+                    playerTwoServeMain();
+                } else if (player2.getServe()) {
+                    playerOneServeMain();
+                }
             }
         }
     }
 
+    private void enableButtons() {
+        if (setServe) {
+            playerOnePlusScoreButton.setClickable(true);
+            playerTwoPlusScoreButton.setClickable(true);
+            playerOneMinusScoreButton.setClickable(true);
+            playerTwoMinusScoreButton.setClickable(true);
+
+            playerOnePlusScoreButton.animate().alpha(1f);
+            playerTwoPlusScoreButton.animate().alpha(1f);
+            playerOneMinusScoreButton.animate().alpha(1f);
+            playerTwoMinusScoreButton.animate().alpha(1f);
+        } else {
+            playerOnePlusScoreButton.setClickable(false);
+            playerTwoPlusScoreButton.setClickable(false);
+
+            playerOneMinusScoreButton.setClickable(false);
+            playerTwoMinusScoreButton.setClickable(false);
+
+            playerOnePlusScoreButton.animate().alpha(0.5f);
+            playerTwoPlusScoreButton.animate().alpha(0.5f);
+            playerOneMinusScoreButton.animate().alpha(0.5f);
+            playerTwoMinusScoreButton.animate().alpha(0.5f);
+        }
+
+
+    }
 
     private void updateScores() {
-        String winner = "";
+        String winner;
         calculateServe();
 
         playerOneScoreView.setText(Integer.toString(player1.getPoints()));
@@ -289,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
         playerTwoGameView.setText(Integer.toString(player2.getGames()));
         winner = wonGame();
         if (winner != null) {
-            Toast.makeText(this, winner, Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.winner) + winner, Toast.LENGTH_LONG).show();
             reset();
         }
     }

@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">PingPongCounter</string>
+    <string name="playerOne">Player 1</string>
+    <string name="playerTwo">Player 2</string>
     <string name="serve">Serve</string>
     <string name="scorePlusOne">Score +1</string>
     <string name="scoreMinusOne">Score -1</string>
     <string name="resetScores">Reset Scores</string>
     <string name="resetMatch">Reset Match</string>
+    <string name="winner">Winner is</string>
     <string name="zero">0</string>
 </resources>

@@ -10,24 +10,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="5dp">
 
         <LinearLayout
             android:id="@+id/playerOneLayout"
             style="@style/LayoutBackground"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="5dp">
 
-            <EditText
+            <TextView
                 android:id="@+id/playerOneName"
+                android:text="@string/playerOne"
                 style="@style/NamesLayout" />
 
             <TextView
                 android:id="@+id/playerOneScore"
-                style="@style/PingPongScore"
-                android:layout_width="wrap_content" />
+                style="@style/PingPongScore" />
 
             <TextView
                 android:id="@+id/playerOneGames"
@@ -61,19 +63,23 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:background="#6b9eea" />
+            android:background="#6b9eea"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
 
         <LinearLayout
             android:id="@+id/playerTwoLayout"
             style="@style/LayoutBackground"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingRight="5dp">
 
-            <EditText
+            <TextView
                 android:id="@+id/playerTwoName"
+                android:text="@string/playerTwo"
                 style="@style/NamesLayout" />
 
             <TextView
@@ -110,12 +116,23 @@
         </LinearLayout>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#6b9eea" />
+
     <LinearLayout
         style="@style/LayoutBackground"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical">
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:orientation="horizontal">
 
 
         <Button
@@ -124,10 +141,24 @@
             android:onClick="resetScoreButton"
             android:text="@string/resetScores" />
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#6b9eea" />
+
         <Button
             android:id="@+id/resetMatch"
             style="@style/ResetButtonLayout"
             android:onClick="resetMatchButton"
             android:text="@string/resetMatch" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#6b9eea" />
 </LinearLayout>
