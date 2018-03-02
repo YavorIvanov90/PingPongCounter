@@ -15,7 +15,6 @@
     <LinearLayout
         android:id="@+id/playerOneLayout"
         style="@style/LayoutBackground"
-        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -25,49 +24,40 @@
             android:id="@+id/playerOneName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
             />
 
         <TextView
             android:id="@+id/playerOneScore"
             style="@style/PingPongScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0" />
+            android:layout_width="wrap_content" />
 
         <TextView
             android:id="@+id/playerOneGames"
             style="@style/PingPongGame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="0" />
+            android:layout_gravity="end" />
 
         <TextView
             android:id="@+id/playerOneServe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Serve"
+            style="@style/ServeTextLayout"
             />
 
         <Button
             android:id="@+id/playerOneScorePlusOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/ButtonLayout"
             android:onClick="addPointPlayerOne"
-            android:text="Score +1" />
+            android:text="@string/scorePlusOne" />
 
         <Button
             android:id="@+id/playerOneScoreMinusOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/ButtonLayout"
             android:onClick="subPointPlayerOne"
-            android:text="Score -1" />
+            android:text="@string/scoreMinusOne" />
 
         <Button
             android:id="@+id/playerOneServeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Serve"
+            style="@style/ButtonLayout"
+            android:text="@string/serve"
             android:onClick="playerOneServe"
             />
 
@@ -76,14 +66,13 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="#000000"
+            android:background="#6b9eea"
             android:layout_margin="10dp"
             />
 
     <LinearLayout
         android:id="@+id/playerTwoLayout"
         style="@style/LayoutBackground"
-        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -92,49 +81,39 @@
         <EditText
             android:id="@+id/playerTwoName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"/>
 
         <TextView
             android:id="@+id/playerTwoScore"
-            style="@style/PingPongScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0" />
+            style="@style/PingPongScore"/>
 
         <TextView
             android:id="@+id/playerTwoGames"
             style="@style/PingPongGame"
-            android:layout_gravity="left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0" />
+            android:layout_gravity="start" />
 
         <TextView
             android:id="@+id/playerTwoServe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Serve"
+            style="@style/ServeTextLayout"
             />
 
         <Button
             android:id="@+id/playerTwoScorePlusOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/ButtonLayout"
             android:onClick="addPointPlayerTwo"
-            android:text="Score +1" />
+            android:text="@string/scorePlusOne" />
 
         <Button
             android:id="@+id/playerTwoScoreMinusOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/ButtonLayout"
             android:onClick="subPointPlayerTwo"
-            android:text="Score -1" />
+            android:text="@string/scoreMinusOne" />
 
         <Button
             android:id="@+id/playerTwoServeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Serve"
+            style="@style/ButtonLayout"
+            android:text="@string/serve"
             android:onClick="playerTwoServe"
             />
 
@@ -152,15 +131,14 @@
 
         <Button
             android:id="@+id/resetScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/ResetButtonLayout"
             android:onClick="resetScoreButton"
-            android:text="Reset Scores" />
+            android:text="@string/resetScores" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="resetGameButton"
-            android:text="Reset Match"/>
+            android:id="@+id/resetMatch"
+            style="@style/ResetButtonLayout"
+            android:onClick="resetMatchButton"
+            android:text="@string/resetMatch"/>
     </LinearLayout>
 </LinearLayout>

@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         reset();
     }
 
-    public void resetGameButton(View view) {
+    public void resetMatchButton(View view) {
         player1.resetGames();
         player2.resetGames();
 
