@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/LayoutBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.example.yavor.pingpongcounter.MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="5dp">
+
+        <LinearLayout
+            android:id="@+id/playerOneLayout"
+            style="@style/LayoutBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/playerOneName"
+                    style="@style/NamesLayout"
+                    android:text="@string/playerOne" />
+
+                <TextView
+                    android:id="@+id/playerOneScore"
+                    style="@style/PingPongScore" />
+
+                <TextView
+                    android:id="@+id/playerOneGames"
+                    style="@style/PingPongGame"
+                    android:layout_gravity="end" />
+
+                <TextView
+                    android:id="@+id/playerOneServe"
+                    style="@style/ServeTextLayout" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/playerOneScorePlusOne"
+                style="@style/ButtonLayout"
+                android:onClick="addPointPlayerOne"
+                android:text="@string/scorePlusOne" />
+
+            <Button
+                android:id="@+id/playerOneScoreMinusOne"
+                style="@style/ButtonLayout"
+                android:onClick="subPointPlayerOne"
+                android:text="@string/scoreMinusOne" />
+
+            <Button
+                android:id="@+id/playerOneServeButton"
+                style="@style/ButtonLayout"
+                android:onClick="playerOneServe"
+                android:text="@string/serve" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#6b9eea" />
+
+        <LinearLayout
+            android:id="@+id/playerTwoLayout"
+            style="@style/LayoutBackground"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/playerTwoServe"
+                    style="@style/ServeTextLayout" />
+
+                <TextView
+                    android:id="@+id/playerTwoGames"
+                    style="@style/PingPongGame"
+                    android:layout_gravity="end" />
+
+                <TextView
+                    android:id="@+id/playerTwoScore"
+                    style="@style/PingPongScore" />
+
+                <TextView
+                    android:id="@+id/playerTwoName"
+                    style="@style/NamesLayout"
+                    android:text="@string/playerTwo" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/playerTwoScorePlusOne"
+                style="@style/ButtonLayout"
+                android:onClick="addPointPlayerTwo"
+                android:text="@string/scorePlusOne" />
+
+            <Button
+                android:id="@+id/playerTwoScoreMinusOne"
+                style="@style/ButtonLayout"
+                android:onClick="subPointPlayerTwo"
+                android:text="@string/scoreMinusOne" />
+
+            <Button
+                android:id="@+id/playerTwoServeButton"
+                style="@style/ButtonLayout"
+                android:onClick="playerTwoServe"
+                android:text="@string/serve" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#6b9eea" />
+
+    <LinearLayout
+        style="@style/LayoutBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+
+        <Button
+            android:id="@+id/resetScore"
+            style="@style/ResetButtonLayout"
+            android:onClick="resetScoreButton"
+            android:text="@string/resetScores" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#6b9eea" />
+
+        <Button
+            android:id="@+id/resetMatch"
+            style="@style/ResetButtonLayout"
+            android:onClick="resetMatchButton"
+            android:text="@string/resetMatch" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#6b9eea" />
+</LinearLayout>

@@ -42,6 +42,14 @@ public class Player {
         this.serve=serve;
     }
 
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public void setGames(int games) {
+        this.games = games;
+    }
+
     public String getName() {
         return name;
     }

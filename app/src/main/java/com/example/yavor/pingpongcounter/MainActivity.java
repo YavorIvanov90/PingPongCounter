@@ -1,5 +1,6 @@
 package com.example.yavor.pingpongcounter;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button playerOneMinusScoreButton;
     private Button playerTwoMinusScoreButton;
+    private SharedPreferences saves;
 
 
     @Override
@@ -42,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        saves = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
 
         player1 = new Player();
         player2 = new Player();
 
         player1.setName(getString(R.string.playerOne));
         player2.setName(getString(R.string.playerTwo));
-
 
 
         playerOneServeView = findViewById(R.id.playerOneServe);
@@ -73,7 +75,31 @@ public class MainActivity extends AppCompatActivity {
         playerOneServeView.setVisibility(View.INVISIBLE);
         playerTwoServeView.setVisibility(View.INVISIBLE);
 
+        if (saves != null) {
+            player1.setPoints(saves.getInt("playerOnePoints", 0));
+            player1.setGames(saves.getInt("playerOneGames", 0));
+            player1.setServe(saves.getBoolean("playerOneServe", false));
 
+            player2.setPoints(saves.getInt("playerTwoPoints", 0));
+            player2.setGames(saves.getInt("playerTwoGames", 0));
+            player2.setServe(saves.getBoolean("playerTwoServe", false));
+
+            if(player1.getServe()){
+                playerOneServeView.setVisibility(View.VISIBLE);
+            }
+            if(player2.getServe()){
+                playerTwoServeView.setVisibility(View.VISIBLE);
+            }
+
+            setServe = saves.getBoolean("setServe", false);
+
+            playerOneScoreView.setText(String.valueOf(player1.getPoints()));
+            playerOneGameView.setText(String.valueOf(player1.getGames()));
+
+            playerTwoScoreView.setText(String.valueOf(player2.getPoints()));
+            playerTwoGameView.setText(String.valueOf(player2.getGames()));
+
+        }
         enableButtons();
 
 
@@ -138,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         player2.resetGames();
         resetServe();
         reset();
-        setServe=false;
+        setServe = false;
         enableButtons();
 
     }
@@ -265,10 +291,26 @@ public class MainActivity extends AppCompatActivity {
         playerTwoGameView.setText(Integer.toString(player2.getGames()));
         winner = wonGame();
         if (winner != null) {
-            Toast.makeText(this,getString(R.string.winner) + winner, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.winner) + " " + winner, Toast.LENGTH_LONG).show();
             reset();
         }
     }
 
+    @Override
+    protected void onDestroy() {
 
+        final SharedPreferences.Editor editor = saves.edit();
+
+        editor.putInt("playerOnePoints", player1.getPoints());
+        editor.putInt("playerOneGames", player1.getGames());
+        editor.putBoolean("playerOneServe", player1.getServe());
+
+        editor.putInt("playerTwoPoints", player2.getPoints());
+        editor.putInt("playerTwoGames", player2.getGames());
+        editor.putBoolean("playerTwoServe", player2.getServe());
+
+        editor.putBoolean("setServe", setServe);
+        editor.commit();
+        super.onDestroy();
+    }
 }

@@ -1,0 +1,65 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="PingPongScore" parent="Theme.AppCompat">
+        <item name="android:textColor">#f1b050</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/zero</item>
+
+    </style>
+    <style name="PingPongGame" parent="PingPongScore">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#FF0000</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:text">@string/zero</item>
+    </style>
+
+    <style name="LayoutBackground" parent="Theme.AppCompat">
+        <item name="android:background">#EEEEEE</item>
+    </style>
+
+    <style name="ButtonLayout" parent="AlertDialog.AppCompat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">#6b9eea</item>
+    </style>
+
+    <style name="ResetButtonLayout" parent="ButtonLayout">
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">#ec6565</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="ServeTextLayout" parent="AlertDialog.AppCompat">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:text">@string/serve</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="NamesLayout" parent="AlertDialog.AppCompat">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:inputType">textPersonName</item>
+    </style>
+
+</resources>
