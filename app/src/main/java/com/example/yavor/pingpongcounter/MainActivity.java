@@ -16,8 +16,8 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-
     boolean setServe = false;
+
     private Player player1;
     private Player player2;
     private Button pOneB;
@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView playerOneServeView;
     private TextView playerTwoServeView;
-
     private TextView playerOneScoreView;
     private TextView playerTwoScoreView;
     private TextView playerOneGameView;
@@ -33,12 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
     private Button playerOnePlusScoreButton;
     private Button playerTwoPlusScoreButton;
-
     private Button playerOneMinusScoreButton;
     private Button playerTwoMinusScoreButton;
+
     private SharedPreferences saves;
-
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,25 +50,20 @@ public class MainActivity extends AppCompatActivity {
         player1.setName(getString(R.string.playerOne));
         player2.setName(getString(R.string.playerTwo));
 
-
         playerOneServeView = findViewById(R.id.playerOneServe);
         playerTwoServeView = findViewById(R.id.playerTwoServe);
-
         playerOneScoreView = findViewById(R.id.playerOneScore);
         playerTwoScoreView = findViewById(R.id.playerTwoScore);
-
         playerOneGameView = findViewById(R.id.playerOneGames);
         playerTwoGameView = findViewById(R.id.playerTwoGames);
 
         playerOnePlusScoreButton = findViewById(R.id.playerOneScorePlusOne);
         playerTwoPlusScoreButton = findViewById(R.id.playerTwoScorePlusOne);
-
         playerOneMinusScoreButton = findViewById(R.id.playerOneScoreMinusOne);
         playerTwoMinusScoreButton = findViewById(R.id.playerTwoScoreMinusOne);
 
         pOneB = findViewById(R.id.playerOneServeButton);
         pTwoB = findViewById(R.id.playerTwoServeButton);
-
 
         playerOneServeView.setVisibility(View.INVISIBLE);
         playerTwoServeView.setVisibility(View.INVISIBLE);
@@ -84,13 +77,12 @@ public class MainActivity extends AppCompatActivity {
             player2.setGames(saves.getInt("playerTwoGames", 0));
             player2.setServe(saves.getBoolean("playerTwoServe", false));
 
-            if(player1.getServe()){
+            if (player1.getServe()) {
                 playerOneServeView.setVisibility(View.VISIBLE);
             }
-            if(player2.getServe()){
+            if (player2.getServe()) {
                 playerTwoServeView.setVisibility(View.VISIBLE);
             }
-
             setServe = saves.getBoolean("setServe", false);
 
             playerOneScoreView.setText(String.valueOf(player1.getPoints()));
@@ -98,11 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
             playerTwoScoreView.setText(String.valueOf(player2.getPoints()));
             playerTwoGameView.setText(String.valueOf(player2.getGames()));
-
         }
         enableButtons();
-
-
     }
 
     public void addPointPlayerOne(View view) {
@@ -140,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 return player1.getName();
             }
         }
-
         if (playerTwoPoints >= 11) {
             if (playerOnePoints < 10) {
                 player2.addGame();
@@ -170,8 +158,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void reset() {
-
-
         player1.resetPoints();
         player2.resetPoints();
 
@@ -180,8 +166,6 @@ public class MainActivity extends AppCompatActivity {
 
         playerOneGameView.setText(Integer.toString(player1.getGames()));
         playerTwoGameView.setText(Integer.toString(player2.getGames()));
-        // resetServe();
-
     }
 
     private void resetServe() {
@@ -195,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
 
         pOneB.animate().alpha(1.0f);
         pTwoB.animate().alpha(1.0f);
-
     }
 
     public void playerOneServe(View view) {
@@ -216,7 +199,6 @@ public class MainActivity extends AppCompatActivity {
 
         pOneB.animate().alpha(0.5f);
         pTwoB.animate().alpha(0.5f);
-
     }
 
     public void playerTwoServe(View view) {
@@ -237,8 +219,6 @@ public class MainActivity extends AppCompatActivity {
 
         pOneB.animate().alpha(0.5f);
         pTwoB.animate().alpha(0.5f);
-
-
     }
 
     private void calculateServe() {
@@ -277,8 +257,6 @@ public class MainActivity extends AppCompatActivity {
             playerOneMinusScoreButton.animate().alpha(0.5f);
             playerTwoMinusScoreButton.animate().alpha(0.5f);
         }
-
-
     }
 
     private void updateScores() {
